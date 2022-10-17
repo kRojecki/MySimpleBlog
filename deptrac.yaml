@@ -1,0 +1,37 @@
+parameters:
+    paths:
+        - ./src
+    exclude_files:
+        - '#.*test.*#'
+    layers:
+        -
+            name: BlogDomain
+            collectors:
+                -
+                    type: directory
+                    regex: src/Blog/Domain/.*
+        -
+            name: BlogApplication
+            collectors:
+                -
+                    type: directory
+                    regex: src/Blog/Application/.*
+        -
+            name: BlogInfrastructure
+            collectors:
+                -
+                    type: directory
+                    regex: src/Blog/Infrastructure/.*
+        -
+            name: BlogUI
+            collectors:
+                -
+                    type: directory
+                    regex: src/Blog/UI/.*
+    ruleset:
+        BlogDomain: ~
+        BlogApplication: ~
+        BlogUI:
+            - BlogApplication
+
+# handle using vendor only in infrastructure
